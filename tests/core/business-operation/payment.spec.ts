@@ -18,9 +18,14 @@ describe("PaymentBusinessOperation", () => {
         PaymentInvoiceParamsMock
       );
 
-      expect(invoice.qrCode).toEqual(
-        await QRCode.toDataURL(PaymentInvoiceMock.data.paymentRequest)
-      );
+      const response = {
+        paymentHash: PaymentInvoiceMock.data.paymentHash,
+        qrCode: await QRCode.toDataURL(PaymentInvoiceMock.data.paymentRequest),
+        checkingId: PaymentInvoiceMock.data.checkingId,
+        lnurlResponse: PaymentInvoiceMock.data.lnrulResponse,
+      };
+
+      expect(invoice).toEqual(response);
     });
 
     it("Should throw an error", async () => {

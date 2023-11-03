@@ -11,6 +11,9 @@ const createInvoice = async (
     const qrCode = await QRCode.toDataURL(invoice.paymentRequest);
 
     return {
+      paymentHash: invoice.paymentHash,
+      checkingId: invoice.checkingId,
+      lnurlResponse: invoice.lnurlResponse,
       qrCode,
     };
   } catch (error) {

@@ -6,7 +6,7 @@ export const PaymentInvoiceMock = {
     paymentHash: "fake-hash",
     paymentRequest: "fake-request",
     checkingId: "fake-checking-id",
-    lnrulResponse: null,
+    lnrulResponse: undefined,
   },
 };
 
