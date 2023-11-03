@@ -30,3 +30,10 @@ export const VideoFindByUidParamsMock = VideoFindByUidRepositoryParamsMock;
 export const VideoUpdateRepositoryParamsMock = VideoMock;
 
 export const VideoUpdateParamsMock = VideoUpdateRepositoryParamsMock;
+
+export const VideoFindByModuleUidRepositoryParamsMock = {
+  moduleUid: "fake-module-uid",
+};
+
+export const VideoFindByModuleUidParamsMock =
+  VideoFindByModuleUidRepositoryParamsMock;

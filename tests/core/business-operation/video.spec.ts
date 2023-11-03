@@ -6,6 +6,7 @@ import {
   VideoMock,
   VideoUpdateParamsMock,
   VideoUploadParamsMock,
+  VideoFindByModuleUidParamsMock,
   VideoUploadedMock,
 } from "../../fixture/video";
 
@@ -110,6 +111,46 @@ describe("VideoBusinessOperation", () => {
         await videoBO.update(VideoUpdateParamsMock);
       } catch (error) {
         expect(error).toEqual(new Error("Error trying to update video"));
+      }
+    });
+  });
+
+  describe("findAllByModuleUid()", () => {
+    it("Should find all videos", async () => {
+      jest
+        .spyOn(videoRepository, "findAllByModuleUid")
+        .mockResolvedValueOnce([VideoMock as Video]);
+
+      const videos = await videoBO.findAllByModuleUid(
+        VideoFindByModuleUidParamsMock
+      );
+
+      expect(videos).toEqual([VideoMock]);
+    });
+
+    it("Should find zero videos", async () => {
+      jest
+        .spyOn(videoRepository, "findAllByModuleUid")
+        .mockResolvedValueOnce([]);
+
+      const videos = await videoBO.findAllByModuleUid(
+        VideoFindByModuleUidParamsMock
+      );
+
+      expect(videos).toEqual([]);
+    });
+
+    it("Should throw error", async () => {
+      jest
+        .spyOn(videoRepository, "findAllByModuleUid")
+        .mockRejectedValueOnce(Error);
+
+      try {
+        await videoBO.findAllByModuleUid(VideoFindByModuleUidParamsMock);
+      } catch (error) {
+        expect(error).toEqual(
+          new Error("Error trying to findAllByModuleUid videos")
+        );
       }
     });
   });
