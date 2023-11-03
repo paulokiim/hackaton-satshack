@@ -19,3 +19,19 @@ export const PaymentInvoiceParamsMock = {
   out: false,
   amount: 10.0,
 };
+
+export const PaymentInvoiceStatusMock = {
+  status: StatusCodes.OK,
+  data: {
+    paid: true,
+  },
+};
+
+export const PaymentInvoiceStatusParams = {
+  paymentHash: "fake-hash",
+};
+
+export const FailedPaymentInvoiceStatusMock = {
+  status: StatusCodes.BAD_REQUEST,
+  data: {},
+};

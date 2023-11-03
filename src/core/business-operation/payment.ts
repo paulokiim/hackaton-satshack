@@ -18,10 +18,24 @@ const createInvoice = async (
     };
   } catch (error) {
     console.log("Error: ", error);
-    throw new Error("Error trying to create invoike");
+    throw new Error("Error trying to createInvoice");
+  }
+};
+
+const getInvoiceStatus = async (
+  getInvoiceStatusParams: GetPaymentInvoiceParams
+) => {
+  try {
+    const status = await lnBitsService.getInvoiceStatus(getInvoiceStatusParams);
+
+    return status;
+  } catch (error) {
+    console.log("Error: ", error);
+    throw new Error("Error trying to getInvoiceStatus");
   }
 };
 
 export default {
   createInvoice,
+  getInvoiceStatus,
 };

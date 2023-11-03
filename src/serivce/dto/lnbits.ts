@@ -14,3 +14,7 @@ type CreatePaymentInvoiceResponse = {
   checkingId: string;
   lnurlResponse?: string;
 };
+
+type GetPaymentInvoiceParams = {
+  paymentHash: string;
+};

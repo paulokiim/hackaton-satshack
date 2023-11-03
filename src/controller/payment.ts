@@ -16,6 +16,19 @@ const createInvoice = async (req: Request, res: Response) => {
   return res.status(StatusCodes.CREATED).send(invoice);
 };
 
+const getInvoiceStatus = async (req: Request, res: Response) => {
+  const params = req.params;
+
+  const getInvoiceStatusParams = {
+    ...params,
+  } as GetPaymentInvoiceParams;
+
+  const status = await paymentBO.getInvoiceStatus(getInvoiceStatusParams);
+
+  return res.status(StatusCodes.OK).send(status);
+};
+
 export default {
   createInvoice,
+  getInvoiceStatus,
 };

@@ -24,6 +24,22 @@ const createInvoice = async (
   return camelizedData as CreatePaymentInvoiceResponse;
 };
 
+const getInvoiceStatus = async (
+  getInvoiceStatusParams: GetPaymentInvoiceParams
+) => {
+  const response = await client.get(
+    `/api/v1/payments/${getInvoiceStatusParams.paymentHash}`
+  );
+
+  if (response.status !== StatusCodes.OK)
+    throw new Error("Error getting invoice status");
+
+  const camelizedData = camelizeKeys(response.data);
+
+  return camelizedData;
+};
+
 export default {
   createInvoice,
+  getInvoiceStatus,
 };
