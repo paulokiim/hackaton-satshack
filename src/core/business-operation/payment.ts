@@ -1,3 +1,5 @@
+import QRCode from "qrcode";
+
 import lnBitsService from "../../serivce/lnbits";
 
 const createInvoice = async (
@@ -6,7 +8,11 @@ const createInvoice = async (
   try {
     const invoice = await lnBitsService.createInvoice(createInvoiceParams);
 
-    return invoice;
+    const qrCode = await QRCode.toDataURL(invoice.paymentRequest);
+
+    return {
+      qrCode,
+    };
   } catch (error) {
     console.log("Error: ", error);
     throw new Error("Error trying to create invoike");

@@ -1,3 +1,5 @@
+import QRCode from "qrcode";
+
 import lnBitsPayment from "../../../src/core/business-operation/payment";
 import lnBitsService from "../../../src/serivce/lnbits";
 import {
@@ -16,7 +18,9 @@ describe("PaymentBusinessOperation", () => {
         PaymentInvoiceParamsMock
       );
 
-      expect(invoice).toEqual(PaymentInvoiceMock.data);
+      expect(invoice.qrCode).toEqual(
+        await QRCode.toDataURL(PaymentInvoiceMock.data.paymentRequest)
+      );
     });
 
     it("Should throw an error", async () => {
