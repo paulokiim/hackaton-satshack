@@ -11,5 +11,6 @@ router.post("/video", upload.single("video"), videoController.uploadVideo);
 router.put("/video/:uid", videoController.update);
 router.get("/video/:uid", videoController.findByUid);
 router.get("/video/module/:moduleUid", videoController.findAllByModuleUid);
+router.get("/video/stream/:videoId", videoController.streamVideo);
 
 export default router;
