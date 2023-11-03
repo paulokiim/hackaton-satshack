@@ -7,6 +7,7 @@ import Module from "./core/repository/models/Module";
 
 import moduleRoutes from "./routes/module";
 import videoRoutes from "./routes/video";
+import paymentRoutes from "./routes/payment";
 
 const setup = async () => {
   const app = express();
@@ -14,6 +15,7 @@ const setup = async () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(moduleRoutes);
   app.use(videoRoutes);
+  app.use(paymentRoutes);
 
   try {
     await Module.sync();

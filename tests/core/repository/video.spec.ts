@@ -120,6 +120,10 @@ describe("VideoRepository", () => {
   });
 
   describe("findAllByModuleUid", () => {
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
     it("Should find all videos", async () => {
       jest
         .spyOn(videoRepository, "findAllByModuleUid")
